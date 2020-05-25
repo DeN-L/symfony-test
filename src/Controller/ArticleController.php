@@ -92,11 +92,6 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $article = $form->getData();
-            // Устанавливает значение свойств сущности (через сеттер т.к. все св-ва private)
-            $article->setCreatedAt(new \DateTime('now'));
-            $article->setUpdatedAt(new \DateTime('now'));
-
             // Entity Manager отвечает за все взаимодействия с БД.
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -105,7 +100,8 @@ class ArticleController extends AbstractController
         }
 
         return $this->render('article/form.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'isUpdate' => true
         ]);
     }
 
