@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -24,11 +25,19 @@ class Article
     private $user;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Min length is {{ limit }}.",
+     *      maxMessage = "Max length is {{ limit }}."
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="text")
      */
     private $content;

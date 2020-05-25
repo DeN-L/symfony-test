@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Article - {{ article.title }}</h2>
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div><b>ID:</b> {{ article.id }}</div>
+                <br>
+                <div><b>User:</b> {{ article.user }}</div>
+                <br>
+                <div><b>Title:</b> {{ article.title }}</div>
+                <br>
+                <div><b>Content:</b> {{ article.content }}</div>
+                <br>
+                <div><b>Is Publish:</b> {{ article.isPublish ? 'Yes' : 'No' }}</div>
+                <br>
+                <div><b>Created At:</b> {{ article.createdAt|date("F jS \\a\\t g:ia") }}</div>
+                <br>
+                <div><b>Updated At:</b> {{ article.updatedAt|date("F jS \\a\\t g:ia") }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

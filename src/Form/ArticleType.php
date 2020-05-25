@@ -17,7 +17,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', TextType::class, ['label' => 'Title'])
             ->add('content', TextareaType::class, ['label' => 'Content'])
-            ->add('is_publish', CheckboxType::class, ['label' => 'Is Publish'])
+            ->add('is_publish', CheckboxType::class, ['label' => 'Is Publish', 'required' => false])
             ->add('created_at')
             ->add('updated_at')
             ->add('user')
